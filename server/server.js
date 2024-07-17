@@ -5,6 +5,8 @@ const helmet = require('helmet');
 const xss = require('xss-clean');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+require('dotenv').config();
+const sql = require('./config/db');
 
 app.use(helmet());
 app.use(xss());
