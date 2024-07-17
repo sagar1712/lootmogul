@@ -1,5 +1,6 @@
 const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../config/db');
+const User = require('./User');
 
 class Token extends Model {}
 
@@ -10,7 +11,7 @@ Token.init(
 			allowNull: false,
 		},
 		user_id: {
-			type: DataTypes.STRING,
+			type: DataTypes.UUID,
 			allowNull: false,
 		},
 		type: {
@@ -33,5 +34,8 @@ Token.init(
 		timestamps: true,
 	}
 );
+
+Token.belongsTo(User, { foreignKey: 'user_id' });
+User.hasMany(Token, { foreignKey: 'user_id' });
 
 module.exports = Token;
