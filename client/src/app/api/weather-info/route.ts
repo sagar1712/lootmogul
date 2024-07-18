@@ -1,8 +1,6 @@
 import axios from 'axios';
 import { NextResponse } from 'next/server';
 
-const OPENWEATHERMAP_API_KEY = process.env.OPENWEATHERMAP_API_KEY 
-
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const city = searchParams.get('city');
@@ -12,8 +10,9 @@ export async function GET(req: Request) {
   }
 
   try {
-    const geoResponse = await axios.get('https://nominatim.openstreetmap.org/search', {
+    const geoResponse = await axios.get('https://us1.locationiq.com/v1/search.php', {
       params: {
+        key: process.env.LOCATIONIQ_API_KEY,
         q: city,
         format: 'json',
       },
@@ -24,19 +23,19 @@ export async function GET(req: Request) {
     }
 
     const { lat, lon } = geoResponse.data[0];
+	console.log(lat,lon)
 
     const weatherResponse = await axios.get('https://api.openweathermap.org/data/2.5/weather', {
       params: {
         lat,
         lon,
-        appid: OPENWEATHERMAP_API_KEY,
-        units: 'metric', 
+        appid: process.env.OPENWEATHERMAP_API_KEY,
+        units: 'metric',
       },
     });
 
     return NextResponse.json(weatherResponse.data);
   } catch (error) {
-	console.log(error);
     return new NextResponse('Internal Error', { status: 500 });
   }
 }
