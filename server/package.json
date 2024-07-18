@@ -1,28 +1,57 @@
 {
-	"name": "server",
-	"version": "1.0.0",
-	"main": "server.js",
-	"scripts": {
-		"start": "node server.js",
-		"dev": "nodemon server.js",
-		"prepare": "npx sequelize-cli db:migrate"
+	"name": "lootmogul-backend",
+	"version": "1.2.3",
+	"description": "Nodejs Express Sequelize Postgres API blockbounce with JWT",
+	"main": "index.js",
+	"publishConfig": {
+		"access": "public"
 	},
-	"author": "",
+	"scripts": {
+		"start": "node app.js",
+		"prepare": "npx sequelize-cli db:migrate",
+		"start:dev": "nodemon app.js",
+		"start:test": "node start --env test",
+		"start:prod": "node start --env prod",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [
+		"api",
+		"boilerplate",
+		"nodejs",
+		"express",
+		"sequelize",
+		"postgres",
+		"jwt",
+		"api-boilerplate",
+		"nodejs-api",
+		"nodejs-sequelize-api"
+	],
+	"author": "Sagar",
 	"license": "ISC",
-	"description": "",
 	"dependencies": {
-		"body-parser": "^1.20.2",
+		"axios": "^1.6.8",
+		"bcrypt": "^5.1.0",
+		"body-parser": "^1.20.1",
 		"cors": "^2.8.5",
-		"dotenv": "^16.4.5",
-		"express": "^4.19.2",
-		"helmet": "^7.1.0",
+		"dotenv": "^16.0.3",
+		"express": "^4.18.2",
+		"helmet": "^6.0.1",
+		"http-status": "^1.6.2",
+		"joi": "^17.9.1",
+		"jsonwebtoken": "^8.5.1",
+		"moment": "^2.29.4",
+		"nodemailer": "^6.9.1",
+		"nodemon": "^2.0.20",
+		"passport": "^0.6.0",
+		"passport-jsonwebtoken": "^1.0.3",
+		"passport-jwt": "^4.0.1",
 		"pg": "^8.12.0",
-		"pg-hstore": "^2.3.4",
-		"postgres": "^3.4.4",
-		"sequelize": "^6.37.3",
-		"xss-clean": "^0.1.4"
+		"sequelize": "^6.25.5",
+		"swagger-jsdoc": "^6.2.8",
+		"swagger-ui-express": "^4.6.2",
+		"xss-clean": "^0.1.1"
 	},
 	"devDependencies": {
-		"nodemon": "^3.1.4"
+		"sequelize-cli": "^6.5.2"
 	}
 }

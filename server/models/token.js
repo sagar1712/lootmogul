@@ -1,41 +1,27 @@
-const { DataTypes, Model } = require('sequelize');
-const sequelize = require('../config/db');
-const User = require('./User');
-
-class Token extends Model {}
-
-Token.init(
-	{
-		token: {
-			type: DataTypes.STRING,
-			allowNull: false,
-		},
-		user_id: {
-			type: DataTypes.UUID,
-			allowNull: false,
-		},
-		type: {
-			type: DataTypes.STRING,
-			allowNull: false,
-		},
-		expire_at: {
-			type: DataTypes.DATE,
-			allowNull: false,
-		},
-		black_listed: {
-			type: DataTypes.INTEGER,
-			defaultValue: 0,
-		},
-	},
-	{
-		sequelize,
-		modelName: 'Token',
-		tableName: 'tokens',
-		timestamps: true,
-	}
-);
-
-Token.belongsTo(User, { foreignKey: 'user_id' });
-User.hasMany(Token, { foreignKey: 'user_id' });
-
-module.exports = Token;
+'use strict';
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class token extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+    }
+  }
+  token.init({
+    token: DataTypes.STRING,
+    user_id: DataTypes.STRING,
+    type: DataTypes.STRING,
+    expire_at: DataTypes.DATE,
+    black_listed: DataTypes.INTEGER
+  }, {
+    sequelize,
+    modelName: 'token',
+  });
+  return token;
+};
