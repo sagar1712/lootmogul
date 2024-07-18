@@ -9,7 +9,7 @@
 	"scripts": {
 		"start": "node app.js",
 		"prepare": "npx sequelize-cli db:migrate",
-		"start:dev": "node start --env dev",
+		"start:dev": "nodemon app.js",
 		"start:test": "node start --env test",
 		"start:prod": "node start --env prod",
 		"test": "echo \"Error: no test specified\" && exit 1"
