@@ -22,7 +22,7 @@ const generateToken = (
 	return jwt.sign(payload, secret);
 };
 
-const saveToken = async (token, userId, expires, type, blacklisted = false) => {
+const saveToken = async (token, userId, expires, type, blacklisted = 0) => {
 	try {
 		const tokenDoc = await Token.create({
 			token,
@@ -69,9 +69,6 @@ const generateAuthTokens = async (user) => {
 	);
 	await saveToken(accessToken, user.id, accessTokenExpires, tokenTypes.ACCESS);
 
-	console.log(
-		'======================================================================'
-	);
 	const refreshTokenExpires = moment().add(
 		process.env.JWT_REFRESH_EXPIRATION_DAYS,
 		'days'
