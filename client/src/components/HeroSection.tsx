@@ -261,9 +261,8 @@ const HeroSection = () => {
 				</Card>
 			</div>
 
-			{/* API Response Display */}
 			{(apiResponse || error) && (
-				<div className="mt-8 p-4 bg-white bg-opacity-10 backdrop-blur-md rounded-lg text-white">
+				<div className="my-8 mx-32 bg-purple-600 backdrop-blur-md text-white">
 					<h2 className="text-2xl mb-4">API Response</h2>
 					{error ? (
 						<p className="text-red-500">{error}</p>
