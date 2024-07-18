@@ -12,6 +12,7 @@
 		"start:dev": "nodemon app.js",
 		"start:test": "node start --env test",
 		"start:prod": "node start --env prod",
+		"generate-config": "node generateConfig.js",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"keywords": [
