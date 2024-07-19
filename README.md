@@ -45,6 +45,45 @@ or
 npm run start:dev
 ```
 
+To Test the apis, follow these api paths and their respective sample input data:
+
+### To register
+
+```
+http://localhost:5000/auth/register
+
+{
+  "username": "fake name",
+  "email": "fankke@example.com",
+  "password": "password2",
+  "role": "user"
+}
+
+```
+
+### To login
+
+```
+http://localhost:5000/auth/login
+
+{
+  "email": "fankke@example.com",
+  "password": "password2"
+}
+
+```
+
+### To logout
+
+```
+http://localhost:5000/auth/logout
+
+{
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsImlhdCI6MTcyMTM4MjMxNCwiZXhwIjoxNzIxNDY4NzE0LCJ0eXBlIjoicmVmcmVzaCJ9.dpE944Dq2QEuKXoaWcRzmEUp1SAxLIo9cSpaAPYwIFs"
+}
+
+```
+
 ## Client Directory
 
 ### Configuration
