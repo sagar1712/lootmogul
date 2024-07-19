@@ -27,17 +27,23 @@ const loginUserWithEmailAndPassword = async (email, password) => {
  * @returns {Promise}
  */
 const logout = async (refreshToken) => {
-	const refreshTokenDoc = await Token.findOne({
-		where: {
-			token: refreshToken,
-			type: tokenTypes.REFRESH,
-			black_listed: false,
-		},
-	});
-	if (!refreshTokenDoc) {
-		return null;
+	try {
+		const refreshTokenDoc = await Token.findOne({
+			where: {
+				token: refreshToken,
+				type: tokenTypes.REFRESH,
+				black_listed: 0,
+			},
+		});
+		if (!refreshTokenDoc) {
+			throw new Error('Not found');
+		}
+		await refreshTokenDoc.update({ black_listed: 1 });
+		return refreshTokenDoc;
+	} catch (error) {
+		console.error('Logout error:', error);
+		throw error;
 	}
-	await refreshTokenDoc.destroy();
 };
 
 /**
