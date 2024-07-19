@@ -1,14 +1,14 @@
 {
 	"name": "lootmogul-backend",
 	"version": "1.2.3",
-	"description": "Nodejs Express Sequelize Postgres API blockbounce with JWT",
+	"description": "Nodejs Express Sequelize Postgres API with JWT",
 	"main": "index.js",
 	"publishConfig": {
 		"access": "public"
 	},
 	"scripts": {
 		"preinstall": "node generateConfig.js",
-		"postinstall": "npm install pg",
+		"build": "npm install pg", 
 		"start": "node app.js",
 		"prepare": "npx sequelize-cli db:migrate",
 		"start:dev": "nodemon app.js",
