@@ -8,6 +8,7 @@
 	},
 	"scripts": {
 		"preinstall": "node generateConfig.js",
+		"postinstall": "npm install pg",
 		"start": "node app.js",
 		"prepare": "npx sequelize-cli db:migrate",
 		"start:dev": "nodemon app.js",
